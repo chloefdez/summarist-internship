@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { useModal } from "./ModalProvider";
+import Image from "next/image";
 
 export default function LoginModal() {
-  const { isLoginOpen, closeLogin } = useModal();
+    const { isLoginOpen, closeLogin, openSignup } = useModal();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -93,12 +94,13 @@ export default function LoginModal() {
           {/* Google login */}
           <button
             type="button"
-            className="mt-3 w-full rounded-md border border-slate-300 bg-white py-3 font-medium text-slate-800 transition hover:bg-slate-50"
+            className="mt-3 flex w-full items-center justify-center gap-3 rounded-md border border-slate-300 bg-white py-3 font-medium text-slate-800 transition hover:bg-slate-50"
             onClick={() => {
               // later: Clerk Google auth
               alert("Google login coming next 🙂");
             }}
           >
+            <Image src="/google.png" alt="Google" width={18} height={18} />
             Continue with Google
           </button>
           {/* Links */}
@@ -114,7 +116,10 @@ export default function LoginModal() {
             <button
               type="button"
               className="text-blue-600 hover:underline"
-              onClick={() => alert("Sign up modal coming soon 🙂")}
+              onClick={() => {
+                closeLogin();
+                openSignup();
+              }}
             >
               Don&apos;t have an account?
             </button>
