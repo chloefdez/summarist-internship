@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useUser } from "@clerk/nextjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import RotatingHighlights from "./components/RotatingHighlights";
 import Testimonials from "./components/Testimonials";
@@ -10,8 +13,12 @@ import {
   faMicrophone,
 } from "@fortawesome/free-solid-svg-icons";
 import LoginButton from "./components/LoginButton";
+import AuthButton from "./components/AuthButton";
 
 export default function HomePage() {
+    
+  const { isSignedIn, user } = useUser();
+
   return (
     <main className="min-h-screen bg-white text-slate-900">
       {/* NAVBAR */}
@@ -32,7 +39,7 @@ export default function HomePage() {
 
           {/* Right: Nav links */}
           <nav className="flex items-center space-x-8 text-[16px] font-medium text-slate-800">
-            <LoginButton className="hover:text-[#27c96f]">Login</LoginButton>
+            <AuthButton />
             <button className="hover:text-[#27c96f]">About</button>
             <button className="hover:text-[#27c96f]">Contact</button>
             <button className="hover:text-[#27c96f]">Help</button>
@@ -231,9 +238,9 @@ export default function HomePage() {
           />
         </div>
       </section>
-      < Testimonials />
-      < Reviews />
-      < Footer />
+      <Testimonials />
+      <Reviews />
+      <Footer />
     </main>
   );
 }

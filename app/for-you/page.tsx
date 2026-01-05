@@ -1,7 +1,12 @@
-export default function ForYouPage() {
-    return (
-      <main className="min-h-screen">
-        <h1>For You page</h1>
-      </main>
-    );
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
+
+export default async function ForYouPage() {
+  const { userId } = await auth();
+
+  if (!userId) {
+    redirect("/sign-in");
+  }
+
+  return <main>You are logged in!</main>;
 }

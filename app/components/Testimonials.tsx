@@ -61,7 +61,7 @@ export default function Testimonials() {
       </div>
 
       {/* We'll make this dynamic later */}
-      <LoginButton className="mt-10 w-full max-w-[260px] rounded-md bg-[#2cd97c] py-3 font-medium hover:bg-[#27c96f] hover:shadow-md">
+      <LoginButton className="mt-10 w-full max-w-[260px] rounded-md bg-[#2cd97c] py-3 font-medium text-white hover:bg-[#27c96f] hover:shadow-md">
         Login
       </LoginButton>
     </section>

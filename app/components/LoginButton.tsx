@@ -1,19 +1,22 @@
 "use client";
 
-import { ReactNode } from "react";
-import { useModal } from "./ModalProvider";
+import * as React from "react";
+import { SignInButton } from "@clerk/nextjs";
 
-type Props = {
-  children: ReactNode;
+type LoginButtonProps = {
   className?: string;
+  children?: React.ReactNode;
 };
 
-export default function LoginButton({ children, className }: Props) {
-  const { openLogin } = useModal();
-
+export default function LoginButton({
+  className = "",
+  children,
+}: LoginButtonProps) {
   return (
-    <button onClick={openLogin} className={className}>
-      {children}
-    </button>
+    <SignInButton mode="modal">
+      <button type="button" className={className}>
+        {children ?? "Login"}
+      </button>
+    </SignInButton>
   );
 }
