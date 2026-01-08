@@ -1,3 +1,5 @@
+// fake backend file for now
+
 export type Book = {
   id: string;
   title: string;
@@ -23,7 +25,7 @@ export const BOOKS: Book[] = [
     title: "Atomic Habits",
     author: "James Clear",
     description: "Tiny changes, remarkable results. Build better habits.",
-    coverUrl: "/covers/atomic-habits.jpg",
+    coverUrl: "/book-covers/atomic_habits.png",
     tags: ["Self-help", "Productivity"],
     minutes: 15,
   },
@@ -32,17 +34,35 @@ export const BOOKS: Book[] = [
     title: "Deep Work",
     author: "Cal Newport",
     description: "Rules for focused success in a distracted world.",
-    coverUrl: "/covers/deep-work.jpg",
+    coverUrl: "/book-covers/deep-work.png",
     tags: ["Productivity", "Business"],
     minutes: 18,
   },
   {
-    id: "psychology-money",
-    title: "The Psychology of Money",
-    author: "Morgan Housel",
-    description: "Timeless lessons on wealth, greed, and happiness.",
-    coverUrl: "/covers/psychology-of-money.jpg",
+    id: "cant-hurt-me",
+    title: "Can't Hurt Me",
+    author: "David Goggins",
+    description: "Master Your Mind and Defy the Odds",
+    coverUrl: "/book-covers/cant-hurt-me.png",
     tags: ["Business", "Psychology"],
-    minutes: 16,
+    minutes: 4,
   },
 ];
+
+export const RECOMMENDED_BOOK_IDS = [
+  "atomic-habits",
+  "deep-work",
+  "cant-hurt-me",
+];
+
+export const SUGGESTED_BOOK_IDS = [
+  "atomic-habits",
+  "deep-work",
+  "cant-hurt-me",
+];
+
+export const getBooksByIds = (ids: string[]): Book[] => {
+  return ids
+    .map((id) => BOOKS.find((b) => b.id === id))
+    .filter((b): b is Book => Boolean(b));
+};
